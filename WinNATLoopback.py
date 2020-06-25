@@ -21,7 +21,10 @@ publicIP = get_public_ip()
 
 
 class WinNATLoopback:
+    version = "v1.0.0"
+
     def __init__(self):
+        print(f"WinNATLoopback {WinNATLoopback.version}")
         self.isExecutable = os.path.samefile(sys.executable, sys.argv[0])
         self.DaemonProcess = Daemon.launch(executable=self.isExecutable)
         atexit.register(WinNATLoopback.teardown_interface)
@@ -92,7 +95,7 @@ class Daemon:
 
 if __name__ == "__main__":
     try:
-        os.system("title WinNATLoopback")
+        os.system(f"title WinNATLoopback {WinNATLoopback.version}")
     except:
         pass
     try:
